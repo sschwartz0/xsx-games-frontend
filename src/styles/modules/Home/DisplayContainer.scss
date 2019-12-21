@@ -1,0 +1,12 @@
+.home-container {
+  display: grid;
+  grid-template-rows: 400px 1fr;
+  grid-template-columns: 24px 500px 1fr 24px;
+  grid-template-areas: ". latest news .";
+
+  .home-latest-container {
+    display: flex;
+    flex-direction: column;
+    grid-area: latest;
+  }
+}

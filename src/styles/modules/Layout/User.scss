@@ -1,0 +1,19 @@
+.app-header-user-container {
+  grid-area: user;
+  display: flex;
+  flex-direction: row;
+  justify-content: flex-end;
+  align-items: center;
+
+  i {
+    font-size: 20px;
+    padding: 15px;
+
+    &:hover {
+      color: #5fd400;
+      cursor: pointer;
+      border-radius: 6px;
+      background-color: #f1f1f1;
+    }
+  }
+}
