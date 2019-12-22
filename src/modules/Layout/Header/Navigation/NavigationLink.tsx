@@ -1,31 +1,23 @@
-import React, { useState } from "react";
-import { GameListDropdown } from "./GameListDropdown";
+import React from "react";
+import { GameListType } from "./Navigation";
 
 interface NavigationLinkProps {
   name: string;
+  type: GameListType;
+  setGameListType: React.Dispatch<React.SetStateAction<GameListType>>;
 }
 
-export const NavigationLink: React.FC<NavigationLinkProps> = props => {
-  const [isGameListDropdownVisible, setGameListDropdownVisibility] = useState(
-    false
-  );
-
-  const toggleGameListDropdownVisibility = () =>
-    setGameListDropdownVisibility(!isGameListDropdownVisible);
-
-  return (
-    <>
-      <div
-        className="app-header-navigation-link"
-        onMouseOver={toggleGameListDropdownVisibility}
-      >
-        {props.name}
-      </div>
-      <GameListDropdown
-        gameList={[]}
-        isVisible={isGameListDropdownVisible}
-        toggleVisibility={toggleGameListDropdownVisibility}
-      />
-    </>
-  );
-};
+export const NavigationLink: React.FC<NavigationLinkProps> = ({
+  name,
+  setGameListType,
+  type
+}) => (
+  <>
+    <div
+      className="app-header-navigation-link"
+      onMouseOver={() => setGameListType(type)}
+    >
+      {name}
+    </div>
+  </>
+);

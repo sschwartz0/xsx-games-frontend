@@ -1,7 +1,23 @@
-.game-list-dropdown-container {
+.game-list-dropdown-transition-container {
   width: 100%;
   background-color: #fafafa;
   position: absolute;
   top: 60px;
   overflow-y: hidden;
+  overflow-x: auto;
+  padding: 0px;
+
+  .game-list-dropdown-container {
+    padding: 24px;
+    display: flex;
+    flex-direction: row;
+
+    .game-box-container {
+      margin-right: 24px;
+
+      &:last-of-type {
+        margin-right: 0px;
+      }
+    }
+  }
 }
