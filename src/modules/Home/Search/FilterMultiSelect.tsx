@@ -1,17 +1,19 @@
-import React, { useState } from "react";
+import React, { useState, useRef } from "react";
 import { remove } from "lodash";
+import { onClickOutsideElement } from "../../../lib/onClickOutsideElement";
 
 type Option = { label: string; value: string };
 
-interface FilterSelectProps {
+interface FilterMultiSelectProps {
   options: Option[];
   text: string;
 }
 
-export const FilterSelect: React.FC<FilterSelectProps> = ({
+export const FilterMultiSelect: React.FC<FilterMultiSelectProps> = ({
   options,
   text
 }) => {
+  const element = useRef(null);
   const [areOptionsVisible, setOptionsVisibility]: [
     boolean,
     Function
@@ -30,9 +32,16 @@ export const FilterSelect: React.FC<FilterSelectProps> = ({
 
     setActiveFilters(newActiveFilters);
   };
+  const clearFilters = () => setActiveFilters([]);
+
+  if (element.current) {
+    onClickOutsideElement((element.current as unknown) as HTMLElement, () =>
+      setOptionsVisibility(false)
+    );
+  }
 
   return (
-    <div className="home-search-filter-select-container">
+    <div className="home-search-filter-select-container" ref={element}>
       <div className="home-search-filter" onClick={toggleOptionsVisibility}>
         <div>{text}</div>
         {activeFilters.length > 0 && (
@@ -43,6 +52,11 @@ export const FilterSelect: React.FC<FilterSelectProps> = ({
       </div>
       {areOptionsVisible && (
         <div className="home-search-filter-options">
+          {activeFilters.length > 0 && (
+            <div className="home-search-filter-clear" onClick={clearFilters}>
+              Clear selected
+            </div>
+          )}
           {options.map(option => (
             <FilterSelectOption
               activeFilters={activeFilters}

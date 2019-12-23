@@ -1,11 +1,23 @@
 import React, { useState } from "react";
 import { Filter } from "./Filter";
-import { FilterSelect } from "./FilterSelect";
+import { FilterMultiSelect } from "./FilterMultiSelect";
+import { Sort } from "./Sort";
 
 interface SearchContainerProps {}
 
 export const SearchContainer: React.FC<SearchContainerProps> = () => {
   const [filterType, setFilterType] = useState("title");
+  const [sortType, setSortType] = useState("releaseDate");
+  const [sortDirection, setSortDirection] = useState("desc");
+
+  const onClickSort = (type: string) => {
+    if (sortType !== type) {
+      setSortType(type);
+      setSortDirection("desc");
+    } else {
+      setSortDirection(sortDirection === "asc" ? "desc" : "asc");
+    }
+  };
 
   return (
     <div className="home-search-area-container">
@@ -25,7 +37,28 @@ export const SearchContainer: React.FC<SearchContainerProps> = () => {
               onClick={() => setFilterType("devPub")}
               text="Developer/Publisher"
             />
-            <FilterSelect options={genreOptions} text="Genres" />
+            <div className="home-sarch-filter-separator" />
+            <FilterMultiSelect options={genreOptions} text="Genres" />
+            <FilterMultiSelect options={ratingOptions} text="Ratings" />
+            <div className="home-sarch-filter-separator" />
+            <Sort
+              direction={sortDirection}
+              isActive={sortType === "releaseDate"}
+              onClick={() => onClickSort("releaseDate")}
+              text="Release Date"
+            />
+            <Sort
+              direction={sortDirection}
+              isActive={sortType === "name"}
+              onClick={() => onClickSort("name")}
+              text="Name"
+            />
+            <Sort
+              direction={sortDirection}
+              isActive={sortType === "rating"}
+              onClick={() => onClickSort("rating")}
+              text="Rating"
+            />
           </div>
         </div>
       </div>
@@ -57,5 +90,28 @@ const genreOptions = [
   {
     label: "TPS",
     value: "tps"
+  }
+];
+
+const ratingOptions = [
+  {
+    label: "*****",
+    value: "5"
+  },
+  {
+    label: "****",
+    value: "4"
+  },
+  {
+    label: "***",
+    value: "3"
+  },
+  {
+    label: "**",
+    value: "2"
+  },
+  {
+    label: "*",
+    value: "1"
   }
 ];

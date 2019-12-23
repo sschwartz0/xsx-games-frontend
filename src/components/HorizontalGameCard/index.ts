@@ -1,0 +1,1 @@
+export { HorizontalGameCard } from "./HorizontalGameCard";

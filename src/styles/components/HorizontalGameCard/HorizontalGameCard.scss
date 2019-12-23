@@ -1,0 +1,88 @@
+.horizontal-game-card-container {
+  width: 100%;
+  height: 250px;
+  background-color: #fafafa;
+  border-radius: 2px;
+  display: grid;
+  grid-template-columns: 350px 1fr;
+  grid-template-rows: 1fr;
+  grid-template-areas: "details image";
+
+  .horizontal-game-card-image {
+    grid-area: image;
+    background-size: cover;
+    background-position: center center;
+  }
+
+  .horizontal-game-card-details {
+    padding: 24px;
+
+    .horizontal-game-card-details-name {
+      font-size: 20px;
+    }
+
+    .horizontal-game-card-details-developer {
+      font-size: 14px;
+      color: #808080;
+    }
+
+    .horizontal-game-card-details-property {
+      font-size: 12px;
+      font-weight: 600;
+      margin-right: 12px;
+      width: 50px;
+    }
+
+    .horizontal-game-card-details-genres {
+      margin-top: 24px;
+      display: flex;
+      flex-direction: row;
+      border-top: 1px solid #e7e7e7;
+      align-items: center;
+      padding: 5px 0;
+
+      .horizontal-game-card-details-genre {
+        font-size: 12px;
+        padding: 3px 5px;
+        border-radius: 3px;
+        background-color: #02a7c4;
+        color: #fafafa;
+        margin-right: 12px;
+      }
+    }
+
+    .horizontal-game-card-details-personals {
+      display: flex;
+      flex-direction: row;
+      border-top: 1px solid #e7e7e7;
+      align-items: center;
+      padding: 5px 0;
+
+      .horizontal-game-card-details-personal {
+        font-size: 12px;
+        padding: 3px 5px;
+        border-radius: 3px;
+        background-color: #c1c402;
+        color: #fafafa;
+        margin-right: 12px;
+      }
+    }
+
+    .horizontal-game-card-details-lists {
+      display: flex;
+      flex-direction: row;
+      border-top: 1px solid #e7e7e7;
+      align-items: center;
+      padding: 5px 0;
+
+      .horizontal-game-card-details-list {
+        font-size: 12px;
+        padding: 3px 5px;
+        border-radius: 3px;
+        background-color: #c4027a;
+        color: #fafafa;
+        margin-right: 12px;
+      }
+    }
+  }
+}

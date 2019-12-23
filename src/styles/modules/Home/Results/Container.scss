@@ -1,0 +1,9 @@
+.home-results-container {
+  .home-results-list {
+    margin-top: 24px;
+    display: grid;
+    grid-auto-rows: 250px;
+    grid-template-columns: 100%;
+    grid-row-gap: 24px;
+  }
+}
