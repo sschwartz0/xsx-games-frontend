@@ -1,7 +1,7 @@
 import React from "react";
 import { Header } from "./modules/Layout/Header/Container";
 import { loadTheme } from "@uifabric/styling";
-import { HomeDisplayContainer } from "./modules/Home/DisplayContainer";
+import { HomeWrapped } from "./modules/Home/DisplayContainer";
 
 loadTheme({
   palette: {
@@ -34,7 +34,7 @@ const App: React.FC = () => {
   return (
     <div className="App ms-Fabric">
       <Header />
-      <HomeDisplayContainer />
+      <HomeWrapped />
     </div>
   );
 };

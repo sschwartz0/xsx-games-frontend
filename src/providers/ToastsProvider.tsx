@@ -8,7 +8,7 @@ enum ActionType {
   REMOVE_TOAST = "REMOVE_TOAST"
 }
 
-type ToastProps = {
+type ToastType = {
   content: string;
   id: string;
   type: keyof typeof MessageBarType;
@@ -18,7 +18,7 @@ type Action =
   | {
       type: ActionType.ADD_TOAST;
       id: string;
-      payload: ToastProps;
+      payload: ToastType;
     }
   | {
       type: ActionType.REMOVE_TOAST;
@@ -27,7 +27,7 @@ type Action =
 
 const ToastContext = React.createContext(undefined as any);
 
-const toastsReducer = (state: { [id: string]: ToastProps }, action: Action) => {
+const toastsReducer = (state: { [id: string]: ToastType }, action: Action) => {
   switch (action.type) {
     case ActionType.ADD_TOAST: {
       const newState = { ...state, [action.id]: action.payload };
@@ -50,7 +50,7 @@ const toastsReducer = (state: { [id: string]: ToastProps }, action: Action) => {
 export const ToastProvider: React.FC<{}> = ({ children }) => {
   const [toasts, toastsDispatch] = useReducer(toastsReducer, {});
 
-  const addToast = (toast: ToastProps) => {
+  const addToast = (toast: ToastType) => {
     const id = uuid();
     toastsDispatch({
       type: ActionType.ADD_TOAST,
@@ -70,7 +70,7 @@ export const ToastProvider: React.FC<{}> = ({ children }) => {
       <TransitionGroup className="toasts-container">
         {Object.values(toasts).map(toast => (
           <CSSTransition classNames="toast" timeout={250} key={toast.id}>
-            <Toast key={toast.id} {...toast} />
+            <Toast key={toast.id} {...toast} onDismiss={removeToast} />
           </CSSTransition>
         ))}
       </TransitionGroup>
@@ -78,19 +78,34 @@ export const ToastProvider: React.FC<{}> = ({ children }) => {
   );
 };
 
-const Toast: React.FC<ToastProps> = ({ content, type }) => {
+interface ToastProps extends ToastType {
+  onDismiss: (id: string) => void;
+}
+
+const Toast: React.FC<ToastProps> = ({ content, id, onDismiss, type }) => {
   return (
     <MessageBar
       messageBarType={type ? MessageBarType[type] : MessageBarType.info}
+      onDismiss={() => onDismiss(id)}
     >
       {content}
     </MessageBar>
   );
 };
 
-interface UseToasts {
-  addToast: (toast: Pick<ToastProps, "content" | "type">) => void;
+export interface UseToasts {
+  addToast: (toast: Pick<ToastType, "content" | "type">) => void;
   removeToast: (id: string) => void;
 }
 
 export const useToasts = (): UseToasts => React.useContext(ToastContext);
+
+export const withToasts = (Component: any) => {
+  return (props: any) => {
+    const { addToast, removeToast } = useToasts();
+
+    return (
+      <Component addToast={addToast} removeToast={removeToast} {...props} />
+    );
+  };
+};

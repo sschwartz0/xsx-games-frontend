@@ -12,13 +12,16 @@
   .toast-enter {
     opacity: 0;
   }
+
   .toast-enter-active {
     opacity: 1;
     transition: opacity 250ms ease-in;
   }
+
   .toast-exit {
     opacity: 1;
   }
+
   .toast-exit-active {
     opacity: 0;
     transition: opacity 250ms ease-in;

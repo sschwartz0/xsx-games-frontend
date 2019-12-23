@@ -6,6 +6,19 @@
   overflow-y: hidden;
   overflow-x: auto;
   padding: 0px;
+  z-index: 99;
+
+  .game-list-dropdown-close {
+    position: absolute;
+    top: 8px;
+    right: 8px;
+    font-size: 12px;
+    cursor: pointer;
+
+    &:hover {
+      color: red;
+    }
+  }
 
   .game-list-dropdown-container {
     padding: 24px;

@@ -1,12 +1,35 @@
 .home-container {
   display: grid;
-  grid-template-rows: 400px 1fr;
-  grid-template-columns: 24px 500px 1fr 24px;
-  grid-template-areas: ". latest news .";
+  grid-template-rows: 1fr;
+  grid-template-columns: 1fr 250px;
+  grid-column-gap: 96px;
+  grid-template-areas: "news latest";
+
+  .home-title {
+    font-size: 32px;
+    color: #ffffff;
+  }
 
   .home-latest-container {
-    display: flex;
-    flex-direction: column;
+    display: grid;
+    grid-row-gap: 24px;
     grid-area: latest;
+
+    .home-title {
+      display: flex;
+      flex-direction: row;
+      align-items: center;
+    }
+
+    .home-latest-title-icon {
+      display: flex;
+      flex-direction: row;
+      justify-content: center;
+      align-items: center;
+      font-size: 16px;
+      margin-left: 15px;
+      margin-top: 4px;
+      cursor: pointer;
+    }
   }
 }

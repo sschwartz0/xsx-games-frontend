@@ -4,6 +4,7 @@ import { GameListType } from "./Navigation";
 import { isMouseBelowElement } from "../../../../lib/isMouseBelowElement";
 import { GameBox } from "../../../../components";
 import { GameBoxProps } from "../../../../components/GameBox/GameBox";
+import { Icon } from "office-ui-fabric-react";
 
 const duration = 200;
 
@@ -40,7 +41,7 @@ export const GameListDropdown: React.FC<GameListDropdownProps> = ({
   };
 
   return (
-    <Transition in={type !== undefined} timeout={duration}>
+    <Transition in={type !== undefined} timeout={0}>
       {state => (
         <div
           className="game-list-dropdown-transition-container"
@@ -48,6 +49,9 @@ export const GameListDropdown: React.FC<GameListDropdownProps> = ({
           onMouseOut={removeFromScreen}
           onMouseLeave={removeFromScreen}
         >
+          <div className="game-list-dropdown-close" onClick={toggleVisibility}>
+            <Icon iconName="chromeClose" />
+          </div>
           <div
             className="game-list-dropdown-container"
             onMouseOver={stopPropagation}
