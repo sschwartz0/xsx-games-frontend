@@ -16,4 +16,8 @@
       background-color: #f1f1f1;
     }
   }
+
+  .user-icon-logged-out {
+    transform: scaleX(-1);
+  }
 }

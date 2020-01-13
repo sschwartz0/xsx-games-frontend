@@ -26,39 +26,45 @@ export const SearchContainer: React.FC<SearchContainerProps> = () => {
         <div className="home-search-container-background" />
         <div className="home-search-container-content">
           <div className="home-search-bar">Start typing to search...</div>
-          <div className="home-search-filters">
-            <Filter
-              isActive={filterType === "title"}
-              onClick={() => setFilterType("title")}
-              text="Title"
-            />
-            <Filter
-              isActive={filterType === "devPub"}
-              onClick={() => setFilterType("devPub")}
-              text="Developer/Publisher"
-            />
-            <div className="home-sarch-filter-separator" />
-            <FilterMultiSelect options={genreOptions} text="Genres" />
-            <FilterMultiSelect options={ratingOptions} text="Ratings" />
-            <div className="home-sarch-filter-separator" />
-            <Sort
-              direction={sortDirection}
-              isActive={sortType === "releaseDate"}
-              onClick={() => onClickSort("releaseDate")}
-              text="Release Date"
-            />
-            <Sort
-              direction={sortDirection}
-              isActive={sortType === "name"}
-              onClick={() => onClickSort("name")}
-              text="Name"
-            />
-            <Sort
-              direction={sortDirection}
-              isActive={sortType === "rating"}
-              onClick={() => onClickSort("rating")}
-              text="Rating"
-            />
+          <div className="home-search-filters-container">
+            <div className="home-search-filters">
+              <Filter
+                isActive={filterType === "title"}
+                onClick={() => setFilterType("title")}
+                text="Title"
+              />
+              <Filter
+                isActive={filterType === "devPub"}
+                onClick={() => setFilterType("devPub")}
+                text="Developer/Publisher"
+              />
+            </div>
+            <div className="home-search-filter-separator" />
+            <div className="home-search-filters">
+              <FilterMultiSelect options={genreOptions} text="Genres" />
+              <FilterMultiSelect options={ratingOptions} text="Ratings" />
+            </div>
+            <div className="home-search-filter-separator" />
+            <div className="home-search-filters">
+              <Sort
+                direction={sortDirection}
+                isActive={sortType === "releaseDate"}
+                onClick={() => onClickSort("releaseDate")}
+                text="Release Date"
+              />
+              <Sort
+                direction={sortDirection}
+                isActive={sortType === "name"}
+                onClick={() => onClickSort("name")}
+                text="Name"
+              />
+              <Sort
+                direction={sortDirection}
+                isActive={sortType === "rating"}
+                onClick={() => onClickSort("rating")}
+                text="Rating"
+              />
+            </div>
           </div>
         </div>
       </div>
@@ -69,49 +75,49 @@ export const SearchContainer: React.FC<SearchContainerProps> = () => {
 const genreOptions = [
   {
     label: "Action/Adventure",
-    value: "actionAdventure"
+    value: "actionAdventure",
   },
   {
     label: "Arcade",
-    value: "arcade"
+    value: "arcade",
   },
   {
     label: "FPS",
-    value: "fps"
+    value: "fps",
   },
   {
     label: "Puzzle",
-    value: "puzzle"
+    value: "puzzle",
   },
   {
     label: "RPG",
-    value: "rpg"
+    value: "rpg",
   },
   {
     label: "TPS",
-    value: "tps"
-  }
+    value: "tps",
+  },
 ];
 
 const ratingOptions = [
   {
     label: "*****",
-    value: "5"
+    value: "5",
   },
   {
     label: "****",
-    value: "4"
+    value: "4",
   },
   {
     label: "***",
-    value: "3"
+    value: "3",
   },
   {
     label: "**",
-    value: "2"
+    value: "2",
   },
   {
     label: "*",
-    value: "1"
-  }
+    value: "1",
+  },
 ];

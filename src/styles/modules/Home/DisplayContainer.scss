@@ -1,8 +1,10 @@
 .home-container {
+  padding: 20px;
   display: grid;
   grid-template-rows: 350px 1fr;
-  grid-template-columns: 1fr 250px;
-  grid-column-gap: 96px;
+  grid-template-columns: 1fr 20px;
+  grid-column-gap: 30px;
+
   grid-template-areas:
     "search latest"
     "results latest";
@@ -11,4 +13,9 @@
     font-size: 32px;
     color: #ffffff;
   }
+}
+
+.home-container-latest-expand {
+  grid-template-columns: 1fr 250px;
+  grid-column-gap: 56px;
 }

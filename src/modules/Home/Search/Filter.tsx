@@ -1,4 +1,5 @@
 import React from "react";
+import { Button, PrimaryButton } from "office-ui-fabric-react";
 
 interface FilterProps {
   isActive: boolean;
@@ -7,13 +8,9 @@ interface FilterProps {
 }
 
 export const Filter: React.FC<FilterProps> = ({ isActive, onClick, text }) => {
-  const classNames = isActive
-    ? "home-search-filter home-search-filter-active"
-    : "home-search-filter";
-
-  return (
-    <div className={classNames} onClick={onClick}>
-      {text}
-    </div>
+  return isActive ? (
+    <PrimaryButton onClick={onClick}>{text}</PrimaryButton>
+  ) : (
+    <Button onClick={onClick}>{text}</Button>
   );
 };

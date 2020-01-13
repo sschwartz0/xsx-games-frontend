@@ -13,14 +13,29 @@
     justify-content: center;
     align-items: center;
     font-size: 16px;
-    margin-left: 15px;
+    margin-right: 15px;
     margin-top: 4px;
     cursor: pointer;
+    color: #ffffff;
   }
 
   .home-latest-list {
     margin-top: 24px;
     display: grid;
     grid-row-gap: 24px;
+  }
+}
+
+.home-latest-hidden-container {
+  .home-latest-title-icon {
+    display: flex;
+    flex-direction: row;
+    justify-content: center;
+    align-items: center;
+    font-size: 16px;
+    margin-left: 15px;
+    margin-top: 4px;
+    cursor: pointer;
+    color: #ffffff;
   }
 }
