@@ -1,7 +1,8 @@
-import React, { useState } from "react";
+import React, { useState, useEffect } from "react";
 import { Header } from "./modules/Layout/Header/Container";
 import { loadTheme } from "@uifabric/styling";
 import { HomeWrapped } from "./modules/Home/DisplayContainer";
+import { useStore } from "./providers/StoreProvider";
 
 loadTheme({
   palette: {
@@ -32,9 +33,30 @@ loadTheme({
 
 const App: React.FC = () => {
   const [loggedIn, setLoggedIn] = useState(false);
+  const [id, setId] = useState("3498");
+  const {
+    reducer,
+    gamesApiGet: { game },
+  } = useStore("games");
+  useEffect(() => {
+    game(id);
+
+    return;
+  }, [id, game]);
+
+  const currentGame = reducer.current;
+
+  const poop = () => setId("3496");
+
+  const poop2 = () => setId("3497");
+
+  console.log({ currentGame });
 
   return (
     <div className="App ms-Fabric">
+      <button onClick={poop}>Test</button>
+      <button onClick={poop2}>Test</button>
+      <button onClick={() => setLoggedIn(true)}>Test</button>
       <Header loggedIn={loggedIn} />
       <HomeWrapped />
     </div>

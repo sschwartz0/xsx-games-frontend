@@ -1,12 +1,23 @@
-import React, { useState } from "react";
+import React, { useState, useEffect } from "react";
 import { TextField, PrimaryButton } from "office-ui-fabric-react";
+import { useStore } from "../../../../providers/StoreProvider";
 
-interface LogInProps {}
-
-export const LogIn: React.FC<LogInProps> = ({}) => {
+export const LogIn: React.FC<{}> = () => {
   const [isSigningUp, setIsSigningUp] = useState(false);
   const setIsSigningUpTrue = () => setIsSigningUp(true);
-  const setIsSigningUpFalse = () => setIsSigningUp(false);
+  const setIsSigningUpFalse = (): void => setIsSigningUp(false);
+  const {
+    reducer,
+    gamesApiGet: { loggedIn },
+  } = useStore("user");
+  useEffect(() => {
+    loggedIn(isSigningUp);
+
+    return;
+  }, [isSigningUp, loggedIn]);
+
+  const user = reducer.loggedIn;
+  console.log({ user });
 
   return (
     <div className="app-header-login-container">
@@ -27,6 +38,7 @@ export const LogIn: React.FC<LogInProps> = ({}) => {
 
       <div
         className="app-header-login-forgot-password"
+        // eslint-disable-next-line @typescript-eslint/explicit-function-return-type
         onClick={isSigningUp ? setIsSigningUpFalse : () => null}
       >
         {isSigningUp ? "Back to login" : "I forgot my password!"}

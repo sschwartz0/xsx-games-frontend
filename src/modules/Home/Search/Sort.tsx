@@ -1,5 +1,5 @@
 import React from "react";
-import { Icon, PrimaryButton, Button } from "office-ui-fabric-react";
+import { PrimaryButton, Button } from "office-ui-fabric-react";
 
 interface SortProps {
   isActive: boolean;
@@ -8,15 +8,10 @@ interface SortProps {
   text: string;
 }
 
-export const Sort: React.FC<SortProps> = ({
-  isActive,
-  direction,
-  onClick,
-  text,
-}) => {
-  const classNames = isActive
-    ? "home-search-filter home-search-sort home-search-filter-active"
-    : "home-search-filter home-search-sort";
+export const Sort: React.FC<SortProps> = ({ isActive, onClick, text }) => {
+  // const classNames = isActive
+  //   ? "home-search-filter home-search-sort home-search-filter-active"
+  //   : "home-search-filter home-search-sort";
 
   return isActive ? (
     <PrimaryButton onClick={onClick} iconProps={{ iconName: "sortDown" }}>

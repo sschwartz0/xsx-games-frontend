@@ -5,12 +5,18 @@ import App from "./App";
 import * as serviceWorker from "./serviceWorker";
 import { initializeIcons } from "@uifabric/icons";
 import { ToastProvider } from "./providers/ToastsProvider";
+// import { Provider } from "react-redux";
+// import { configureStore } from "./config/store";
+import { StoreProvider } from "./providers/StoreProvider";
 initializeIcons();
+// const store = configureStore();
 
 ReactDOM.render(
-  <ToastProvider>
-    <App />
-  </ToastProvider>,
+  <StoreProvider>
+    <ToastProvider>
+      <App />
+    </ToastProvider>
+  </StoreProvider>,
   document.getElementById("root")
 );
 

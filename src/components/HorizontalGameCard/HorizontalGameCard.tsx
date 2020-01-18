@@ -5,7 +5,7 @@ interface HorizontalGameCardProps {
 }
 
 export const HorizontalGameCard: React.FC<HorizontalGameCardProps> = ({
-  image
+  image,
 }) => {
   return (
     <div className="horizontal-game-card-container">

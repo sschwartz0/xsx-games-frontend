@@ -1,7 +1,0 @@
-{
-  "extends": ["tslint:recommended", "react-hooks", "tslint-react"],
-  "rules": {
-    "react-hooks/rules-of-hooks": "error",
-    "react-hooks/exhaustive-deps": "warn"
-  }
-}
