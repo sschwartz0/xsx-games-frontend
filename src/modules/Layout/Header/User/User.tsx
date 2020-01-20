@@ -3,13 +3,14 @@ import { UserIcon } from "./UserIcon";
 import { getClassNames } from "../../../../lib/getClassNames";
 import { Callout } from "office-ui-fabric-react";
 import { LogIn } from "./LogIn";
+import { useStore } from "../../../../providers/StoreProvider";
 
-interface UserProps {
-  loggedIn: boolean;
-}
-
-export const User: React.FC<UserProps> = ({ loggedIn }) => {
+export const User: React.FC<{}> = () => {
   const userStatusRef = useRef(null);
+  const { reducer } = useStore();
+
+  const { loggedIn } = reducer.user;
+
   const [isLoginVisible, setLoginVisibility] = useState(false);
   const showLogin = () => setLoginVisibility(true);
   const hideLogin = () => setLoginVisibility(false);

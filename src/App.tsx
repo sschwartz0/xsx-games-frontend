@@ -32,19 +32,15 @@ loadTheme({
 });
 
 const App: React.FC = () => {
-  const [loggedIn, setLoggedIn] = useState(false);
-  const [id, setId] = useState("3498");
-  const {
-    reducer,
-    gamesApiGet: { game },
-  } = useStore("games");
+  const [id, setId] = useState();
+  const { reducer, api } = useStore();
   useEffect(() => {
-    game(id);
+    api.get.games.byId(id);
 
     return;
-  }, [id, game]);
+  }, [id, api]);
 
-  const currentGame = reducer.current;
+  const currentGame = reducer.games.current;
 
   const poop = () => setId("3496");
 
@@ -56,8 +52,7 @@ const App: React.FC = () => {
     <div className="App ms-Fabric">
       <button onClick={poop}>Test</button>
       <button onClick={poop2}>Test</button>
-      <button onClick={() => setLoggedIn(true)}>Test</button>
-      <Header loggedIn={loggedIn} />
+      <Header />
       <HomeWrapped />
     </div>
   );

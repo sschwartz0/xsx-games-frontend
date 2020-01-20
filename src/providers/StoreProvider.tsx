@@ -1,85 +1,82 @@
 import React, { useReducer, useContext } from "react";
-import { set } from "lodash";
-import { api } from "../api";
+import { isEmpty } from "lodash";
 
-const StoreContext = React.createContext(undefined as any);
+import { api as apiConstructor, Action } from "../api";
+import { rootReducer, initialState, RootReducer } from "./store/rootReducer";
 
-interface RootReducer {
-  games: {
-    [index: string]: {
-      current: {};
-    };
+type API = {
+  get: {
+    games: { byId: (id: string) => void };
   };
-  user: {
-    [index: string]: {
-      loggedIn: boolean;
-    };
+  set: {
+    user: { logIn: () => void; logOut: () => void };
   };
-}
-
-interface Action {
-  type: string;
-  reducer: string;
-  key: string;
-  value: any;
-}
-
-const initialState = {
-  games: {},
-  user: {},
 };
 
-const rootReducer = (state: RootReducer, action: Action) => {
-  switch (action.type) {
-    case "get": {
-      const newState = { ...state };
+// we need to define this outside of the storeprovider so that we can conduct a check
+// in the provider. if we redefine this variable inside of the storeprovider then
+// when we use it (with useEffect) it will be considered as a new variable and will
+// create an infinite loop
+const api: any = {};
 
-      set(newState, `${action.reducer}.${action.key}`, action.value);
+const StoreContext = React.createContext(
+  {} as { reducer: RootReducer; api: API }
+);
 
-      return newState;
-    }
+// run through different API methods and create the endpoints object
+const createApiMethod = (
+  method: "get" | "set",
+  reducerDispatch: React.Dispatch<Action>
+) => {
+  if (isEmpty(api[method])) {
+    // here we create a functional API by taking our api and passing the dispatch
+    api[method] = Object.entries(apiConstructor[method]).reduce(
+      (acc, [group, endpoints]) => {
+        const actions = Object.entries(endpoints).reduce(
+          (acc, [endpointName, endpointFunction]) => ({
+            ...acc,
+            [endpointName]: (endpointFunction as any)(reducerDispatch),
+          }),
+          {}
+        );
 
-    default:
-      return state;
+        return {
+          ...acc,
+          [group]: actions,
+        };
+      },
+      {}
+    );
   }
 };
 
 export const StoreProvider: React.FC<{}> = ({ children }) => {
   const [reducer, reducerDispatch] = useReducer(rootReducer, initialState);
-
-  const gamesApiGet = Object.entries(api).reduce(
-    (acc, [endpoint, endpointFunction]) => ({
-      ...acc,
-      [endpoint]: endpointFunction(reducerDispatch),
-    }),
-    {}
-  );
+  createApiMethod("get", reducerDispatch);
+  createApiMethod("set", reducerDispatch);
 
   return (
-    <StoreContext.Provider value={{ reducer, gamesApiGet }}>
+    <StoreContext.Provider value={{ reducer, api }}>
       {children}
     </StoreContext.Provider>
   );
 };
 
 interface UseStore {
-  reducer: any;
-  gamesApiGet: {
-    game: (id: string) => void;
-    loggedIn: (isLoggedIn: boolean) => void;
-  };
+  reducer: RootReducer;
+  api: API;
 }
 
-export const useStore = (reducerName: string): UseStore => {
-  const { reducer, gamesApiGet } = useContext(StoreContext);
+export const useStore = (): UseStore => {
+  const { reducer, api } = useContext(StoreContext);
 
-  return { reducer: reducer[reducerName], gamesApiGet };
+  return { reducer, api };
 };
 
 // export const withStore = (Component: any) => {
 //   return (props: any) => {
-//     const { reducer, gamesApiGet } = useStore("games");
+//     const { reducer, api } = useStore("games");
 
-//     return <Component reducer={reducer} gamesApiGet={gamesApiGet} {...props} />;
+//     return <Component reducer={reducer} api={api} {...props} />;
 //   };
 // };
