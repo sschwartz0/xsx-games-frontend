@@ -2,14 +2,11 @@ import { get, set } from "lodash";
 
 export interface RootReducer {
   games: {
-    [index: string]: {
-      current: {};
-    };
+    current: {};
   };
+
   user: {
-    [index: string]: {
-      loggedIn: boolean;
-    };
+    loggedIn: boolean;
   };
 }
 
@@ -21,8 +18,12 @@ interface Action {
 }
 
 export const initialState: RootReducer = {
-  games: {},
-  user: {},
+  games: {
+    current: {},
+  },
+  user: {
+    loggedIn: false,
+  },
 };
 
 export const rootReducer = (
