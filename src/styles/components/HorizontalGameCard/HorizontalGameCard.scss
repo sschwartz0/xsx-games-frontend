@@ -5,31 +5,32 @@
   // border: 1px solid #333333;
   border-radius: 6px;
   display: grid;
-  grid-template-columns: 350px 1fr;
+  grid-template-columns: 350px;
   grid-template-rows: 1fr;
-  grid-template-areas: "details image";
-  color: #fafafa;
-
-  .horizontal-game-card-image {
-    grid-area: image;
-    background-size: cover;
-    background-position: center center;
-    border-top-right-radius: 6px;
-    border-bottom-right-radius: 6px;
-  }
+  grid-template-areas: "details";
 
   .horizontal-game-card-details {
+    border-radius: 6px;
     padding: 24px;
+    background-color: rgba(0, 0, 0, 0.6);
 
     .horizontal-game-card-details-name {
       font-size: 24px;
       font-weight: 300;
+      color: $white;
+      text-shadow: 1px 1px $black;
     }
 
     .horizontal-game-card-details-developer {
       font-weight: 300;
       font-size: 14px;
       color: #808080;
+      color: $white;
+      text-shadow: 1px 1px $black;
+    }
+
+    .horizontal-game-card-details-rating {
+      color: gold;
     }
 
     .horizontal-game-card-details-property {
@@ -37,6 +38,8 @@
       font-weight: 300;
       margin-right: 12px;
       width: 50px;
+      color: $white;
+      text-shadow: 1px 1px $black;
     }
 
     .horizontal-game-card-details-genres {

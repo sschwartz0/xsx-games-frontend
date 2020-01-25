@@ -6,7 +6,6 @@ interface ResultsContainerProps {}
 export const ResultsContainer: React.FC<ResultsContainerProps> = () => {
   return (
     <div className="home-results-container">
-      <div className="home-title">Results (30)</div>
       <div className="home-results-list">
         <HorizontalGameCard image="https://encrypted-tbn0.gstatic.com/images?q=tbn%3AANd9GcQxHBC_cbWak2wpF82npTqpI1wCzvkIVAVVwTJJLNWv3hztYDeK" />
         <HorizontalGameCard image="https://encrypted-tbn0.gstatic.com/images?q=tbn%3AANd9GcRmXICnOt00miUIXNMPiDuLyLjuOwcxtdHM8lHDupvODvuJgevq" />

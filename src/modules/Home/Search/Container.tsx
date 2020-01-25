@@ -21,50 +21,46 @@ export const SearchContainer: React.FC<SearchContainerProps> = () => {
 
   return (
     <div className="home-search-area-container">
-      <div className="home-title">Search</div>
       <div className="home-search-container">
-        <div className="home-search-container-background" />
-        <div className="home-search-container-content">
-          <div className="home-search-bar">Start typing to search...</div>
-          <div className="home-search-filters-container">
-            <div className="home-search-filters">
-              <Filter
-                isActive={filterType === "title"}
-                onClick={() => setFilterType("title")}
-                text="Title"
-              />
-              <Filter
-                isActive={filterType === "devPub"}
-                onClick={() => setFilterType("devPub")}
-                text="Developer/Publisher"
-              />
-            </div>
-            <div className="home-search-filter-separator" />
-            <div className="home-search-filters">
-              <FilterMultiSelect options={genreOptions} text="Genres" />
-              <FilterMultiSelect options={ratingOptions} text="Ratings" />
-            </div>
-            <div className="home-search-filter-separator" />
-            <div className="home-search-filters">
-              <Sort
-                direction={sortDirection}
-                isActive={sortType === "releaseDate"}
-                onClick={() => onClickSort("releaseDate")}
-                text="Release Date"
-              />
-              <Sort
-                direction={sortDirection}
-                isActive={sortType === "name"}
-                onClick={() => onClickSort("name")}
-                text="Name"
-              />
-              <Sort
-                direction={sortDirection}
-                isActive={sortType === "rating"}
-                onClick={() => onClickSort("rating")}
-                text="Rating"
-              />
-            </div>
+        <div className="home-search-bar">Start typing to search...</div>
+        <div className="home-search-filters-container">
+          <div className="home-search-filters">
+            <Filter
+              isActive={filterType === "title"}
+              onClick={() => setFilterType("title")}
+              text="Title"
+            />
+            <Filter
+              isActive={filterType === "devPub"}
+              onClick={() => setFilterType("devPub")}
+              text="Developer/Publisher"
+            />
+          </div>
+          <div className="home-search-filter-separator" />
+          <div className="home-search-filters">
+            <FilterMultiSelect options={genreOptions} text="Genres" />
+            <FilterMultiSelect options={ratingOptions} text="Ratings" />
+          </div>
+          <div className="home-search-filter-separator" />
+          <div className="home-search-filters">
+            <Sort
+              direction={sortDirection}
+              isActive={sortType === "releaseDate"}
+              onClick={() => onClickSort("releaseDate")}
+              text="Release"
+            />
+            <Sort
+              direction={sortDirection}
+              isActive={sortType === "name"}
+              onClick={() => onClickSort("name")}
+              text="Name"
+            />
+            <Sort
+              direction={sortDirection}
+              isActive={sortType === "rating"}
+              onClick={() => onClickSort("rating")}
+              text="Rating"
+            />
           </div>
         </div>
       </div>

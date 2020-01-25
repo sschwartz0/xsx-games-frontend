@@ -8,7 +8,10 @@ export const HorizontalGameCard: React.FC<HorizontalGameCardProps> = ({
   image,
 }) => {
   return (
-    <div className="horizontal-game-card-container">
+    <div
+      className="horizontal-game-card-container"
+      style={{ background: `url(${image})` }}
+    >
       <div className="horizontal-game-card-details">
         <div className="horizontal-game-card-details-name">Halo</div>
         <div className="horizontal-game-card-details-developer">Bungie</div>
@@ -31,10 +34,6 @@ export const HorizontalGameCard: React.FC<HorizontalGameCardProps> = ({
           <div className="horizontal-game-card-details-list">Summer 69</div>
         </div>
       </div>
-      <div
-        className="horizontal-game-card-image"
-        style={{ backgroundImage: `url("${image}")` }}
-      />
     </div>
   );
 };
