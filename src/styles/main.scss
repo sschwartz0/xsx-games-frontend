@@ -6,7 +6,7 @@ html,
 body {
   margin: 0;
   padding: 0;
-  background-color: #1f1f1f;
+  background-color: #fafafa;
   height: 100%;
   width: 100%;
   font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", "Roboto", "Oxygen",
@@ -18,4 +18,9 @@ body {
 code {
   font-family: source-code-pro, Menlo, Monaco, Consolas, "Courier New",
     monospace;
+}
+
+a {
+  color: inherit;
+  text-decoration-line: inherit;
 }
