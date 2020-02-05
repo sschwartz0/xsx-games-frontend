@@ -1,3 +1,13 @@
 .page-container {
   padding: 24px;
 }
+
+.link {
+  font-size: 12px;
+  cursor: pointer;
+  font-weight: 500;
+
+  &:hover {
+    color: $themeDark;
+  }
+}

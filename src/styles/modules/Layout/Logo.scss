@@ -1,10 +1,10 @@
 .app-header-logo {
-  font-weight: 400;
+  font-weight: 100;
   font-size: 20px;
   grid-area: logo;
   display: flex;
   flex-direction: row;
   justify-content: flex-start;
   align-items: center;
-  color: #59c402;
+  color: $themeDark;
 }

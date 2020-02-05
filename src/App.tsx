@@ -6,7 +6,7 @@ import { RootRouter } from "modules/RootRouter";
 
 loadTheme({
   palette: {
-    themePrimary: "#56be00",
+    themePrimary: "#1e1e21",
     themeLighterAlt: "#f7fcf2",
     themeLighter: "#dff5ce",
     themeLight: "#c5eca5",

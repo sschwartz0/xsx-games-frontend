@@ -2,26 +2,13 @@ import React, { useState } from "react";
 import { NavigationLink } from "./NavigationLink";
 import { GameListDropdown } from "./GameListDropdown";
 
-interface NavigationProps {}
+export type GameListType = "latest" | "top" | "trending" | "coming" | undefined;
 
-export type GameListType =
-  | "myGames"
-  | "latest"
-  | "top"
-  | "trending"
-  | "coming"
-  | undefined;
-
-export const Navigation: React.FC = (props: NavigationProps) => {
+export const Navigation: React.FC = () => {
   const [gameListType, setGameListType] = useState<GameListType>(undefined);
 
   return (
     <div className="app-header-navigation">
-      <NavigationLink
-        name="My Games"
-        setGameListType={setGameListType}
-        type="myGames"
-      />
       <NavigationLink
         name="Latest"
         setGameListType={setGameListType}

@@ -1,0 +1,47 @@
+.home-page-hero-cta-area {
+  width: 500px;
+  height: 300px;
+  margin-left: 48px;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  background: linear-gradient(0deg, #ffffff, #f3f3f3);
+
+  .home-page-hero-cta-switch {
+    display: flex;
+    flex-direction: row;
+    height: 30px;
+    width: 100%;
+    font-size: 12px;
+    border-bottom: 1px solid #e0e0e0;
+    background-color: #f3f3f3;
+
+    .home-page-hero-cta-switch-button {
+      font-family: "Source Code Pro";
+      height: 100%;
+      width: 50%;
+      font-weight: 600;
+      display: flex;
+      flex-direction: row;
+      align-items: center;
+      justify-content: center;
+      text-transform: uppercase;
+      cursor: pointer;
+    }
+
+    .home-page-hero-cta-switch-button-active {
+      font-weight: 800;
+      background-color: #48a100;
+      color: #fafafa;
+    }
+  }
+
+  .home-page-hero-cta-form {
+    width: 100%;
+    padding: 24px;
+
+    .home-page-hero-cta-form-button {
+      margin-top: 15px;
+    }
+  }
+}

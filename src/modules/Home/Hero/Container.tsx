@@ -1,38 +1,62 @@
-import React from "react";
-import { TextField, Button } from "office-ui-fabric-react";
+import React, { useRef } from "react";
+import { motion } from "framer-motion";
+
+import { ActionBoxContainer } from "./ActionBox/Container";
 
 export const HeroContainer: React.FC<{}> = () => {
   return (
     <div className="home-page-hero-container">
       <div className="home-page-hero-text-area">
-        <div className="home-page-hero-text">The latest news</div>
-        <div className="home-page-hero-text">Subscribe to games</div>
-        <div className="home-page-hero-text">Track your collection</div>
-        <div className="home-page-hero-text">Compare stats</div>
-        <div className="home-page-hero-text">Your Xbox community</div>
+        <HeroText index={0} text="The latest news" />
+        <HeroText index={1} text="Subscribe to games" />
+        <HeroText index={2} text="Track your collection" />
+        <HeroText index={3} text="Compare stats" />
+        <HeroText index={4} text="Your Xbox community" />
+        <motion.div
+          initial={{ display: "none" }}
+          animate={{
+            display: "inherit",
+            opacity: [0, 0.3, 0.6, 0.9, 1],
+          }}
+          transition={{ duration: 1, delay: 5 * 2.02 }}
+          className="home-page-hero-text"
+        >
+          Your way.
+        </motion.div>
       </div>
-      <div className="home-page-hero-cta-area">
-        <div className="home-page-hero-cta-switch">
-          <div className="home-page-hero-cta-switch-button home-page-hero-cta-switch-button-active">
-            Sign Up
-          </div>
-          <div className="home-page-hero-cta-switch-button">Log In</div>
-        </div>
-        <div className="home-page-hero-cta-form">
-          <TextField placeholder="mchief@gmail.com" label="Email Address" />
-          <TextField
-            placeholder="Cortana123"
-            label="Password"
-            type="password"
-          />
-          <TextField
-            placeholder="Cortana123"
-            label="Confirm Password"
-            type="password"
-          />
-          <Button text="Sign Up" />
-        </div>
-      </div>
+      <ActionBoxContainer />
     </div>
+  );
+};
+
+interface HeroTextProps {
+  index: number;
+  text: string;
+}
+
+const HeroText: React.FC<HeroTextProps> = ({ index, text }) => {
+  const element = useRef<HTMLDivElement>(null);
+
+  const removeElement = () => {
+    if (element.current && element.current.parentElement) {
+      element.current.parentElement.removeChild(element.current);
+    }
+  };
+
+  return (
+    <motion.div
+      initial={{ display: "none" }}
+      animate={{
+        display: "inherit",
+        opacity: [0, 0.3, 0.6, 0.9, 1, 0.9, 0.6, 0.3, 0],
+        y: [0, 0, 0, 0, 0, 10, 20, 30, 40],
+      }}
+      transition={{ duration: 2, delay: index * 2.02 }}
+      className="home-page-hero-text"
+      ref={element}
+      onAnimationComplete={removeElement}
+    >
+      {text}
+    </motion.div>
   );
 };
