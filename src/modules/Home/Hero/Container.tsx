@@ -21,7 +21,17 @@ export const HeroContainer: React.FC<{}> = () => {
           transition={{ duration: 1, delay: 5 * 2.02 }}
           className="home-page-hero-text"
         >
-          Your way.
+          Your way
+          <motion.span
+            initial={{ display: "none" }}
+            animate={{
+              display: "inherit",
+              opacity: [0, 0.3, 0.6, 0.9, 1],
+            }}
+            transition={{ duration: 1, delay: 5 * 2.02 + 1 }}
+          >
+            .
+          </motion.span>
         </motion.div>
       </div>
       <ActionBoxContainer />

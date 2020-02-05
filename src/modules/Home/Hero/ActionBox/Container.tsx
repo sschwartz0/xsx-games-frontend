@@ -1,4 +1,6 @@
 import React, { useState } from "react";
+import { motion } from "framer-motion";
+
 import { SignUp } from "./SignUp";
 import { LogIn } from "./LogIn";
 import { getClassNames } from "lib/getClassNames";
@@ -18,7 +20,10 @@ export const ActionBoxContainer: React.FC<{}> = () => {
   });
 
   return (
-    <div className="home-page-hero-cta-area">
+    <motion.div
+      className="home-page-hero-cta-area"
+      animate={{ opacity: [0, 1] }}
+    >
       <div className="home-page-hero-cta-switch">
         <div
           className={signUpButtonClassNames}
@@ -31,6 +36,6 @@ export const ActionBoxContainer: React.FC<{}> = () => {
         </div>
       </div>
       {cta === "signUp" ? <SignUp /> : <LogIn />}
-    </div>
+    </motion.div>
   );
 };
