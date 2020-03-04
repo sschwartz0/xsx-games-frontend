@@ -5,6 +5,7 @@ import { SearchContainer } from "./Search/Container";
 import { ResultsContainer } from "./Results/Container";
 import { getClassNames } from "../../lib/getClassNames";
 import { HeroContainer } from "./Hero/Container";
+import { LogInContainer } from "./LogIn/Container";
 
 interface HomeDisplayContainerProps extends UseToasts {}
 
@@ -19,17 +20,20 @@ export const HomeDisplayContainer: React.FC<HomeDisplayContainerProps> = () => {
   });
 
   return (
-    <div className={classNames}>
-      <HeroContainer />
-      <div className="home-container-right-side">
-        <SearchContainer />
-        <ResultsContainer />
-      </div>
-      {/* <LatestContainer
+    <>
+      <div className={classNames}>
+        <LogInContainer />
+        <HeroContainer />
+        <div className="home-container-right-side">
+          <SearchContainer />
+          <ResultsContainer />
+        </div>
+        {/* <LatestContainer
         isVisible={isLatestVisible}
         toggleVisibility={toggleLatestVisibility}
       /> */}
-    </div>
+      </div>
+    </>
   );
 };
 

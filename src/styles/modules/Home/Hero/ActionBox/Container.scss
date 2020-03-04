@@ -1,5 +1,7 @@
 .home-page-hero-cta-area {
-  width: 500px;
+  grid-area: action;
+  width: 400px;
+  min-width: 400px;
   height: 300px;
   margin-left: 48px;
   display: flex;

@@ -1,11 +1,12 @@
 .home-container {
   display: grid;
-  grid-template-rows: 450px 350px 1fr;
+  grid-template-rows: 43px 400px 350px 1fr;
   grid-template-columns: 1fr 350px 24px;
   grid-column-gap: 24px;
   grid-row-gap: 24px;
 
   grid-template-areas:
+    "log-in log-in log-in"
     "hero hero hero"
     "search results ."
     ". . .";

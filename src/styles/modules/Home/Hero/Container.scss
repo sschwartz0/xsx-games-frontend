@@ -2,26 +2,8 @@
   grid-area: hero;
   background: linear-gradient(180deg, $lightGrey 20%, $darkGrey 93%);
   padding: 40px 60px;
-  display: flex;
-  flex-direction: row;
-  justify-content: space-between;
-
-  .home-page-hero-text-area {
-    margin-top: -50px;
-    min-width: 500px;
-    display: flex;
-    flex-direction: row;
-    align-items: center;
-
-    .home-page-hero-text {
-      font-size: 50px;
-      font-weight: 300;
-      margin-top: 24px;
-      color: #f5f5f5;
-
-      &:first-of-type {
-        margin-top: 0px;
-      }
-    }
-  }
+  display: grid;
+  grid-template-columns: 140px 1fr 30px;
+  grid-template-rows: 100%;
+  grid-template-areas: "links description action .";
 }

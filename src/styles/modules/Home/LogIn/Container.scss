@@ -1,0 +1,32 @@
+.home-container-log-in {
+  grid-area: log-in;
+  width: 100%;
+  z-index: 999;
+  height: 100%;
+
+  .home-container-log-in-content {
+    height: 43px;
+    background-color: #fafafa;
+    display: flex;
+    flex-direction: row;
+    align-items: center;
+    justify-content: center;
+  }
+
+  .ms-TextField-fieldGroup {
+    height: 27px;
+  }
+
+  .home-container-log-in-part {
+    margin-right: 16px;
+    height: 27px;
+  }
+
+  .home-container-log-in-stripe {
+    width: 100%;
+    width: 100%;
+    height: 3px;
+    background-image: linear-gradient(270deg, #84fc54, #5ff880 50%);
+    z-index: 998;
+  }
+}
