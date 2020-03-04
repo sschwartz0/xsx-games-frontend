@@ -1,4 +1,4 @@
-import React, { useRef, useState } from "react";
+import React, { useRef } from "react";
 import { motion } from "framer-motion";
 
 interface HeroLinkProps {
@@ -15,7 +15,7 @@ export const HeroLink: React.FC<HeroLinkProps> = ({
   text,
 }) => {
   const element = useRef<HTMLDivElement>(null);
-  const multiplier = (4 - index) * 0.5;
+  // const multiplier = (4 - index) * 0.5;
   const isSelected = index === selectedLink;
 
   return (
@@ -25,12 +25,12 @@ export const HeroLink: React.FC<HeroLinkProps> = ({
         display: "inherit",
         borderBottomWidth: [0, 0, 0, 1],
         opacity: [0, 0.25, 0.5, 0.75, 1],
-        y: [0, -3 * multiplier, -5 * multiplier, -7 * multiplier],
+        // y: [0, -3 * multiplier, -5 * multiplier, -7 * multiplier],
+        x: [-200, 0],
       }}
-      transition={{ duration: 1, delay: index * 1.02 }}
+      transition={{ duration: 0.3, delay: index * 0.32 + 1.5 }}
       className="home-page-hero-text"
       ref={element}
-      // onAnimationComplete={removeElement}
       onMouseEnter={() => setSelectedLink(index)}
     >
       <div>
@@ -41,7 +41,7 @@ export const HeroLink: React.FC<HeroLinkProps> = ({
             display: "inherit",
             width: ["0%", "100%"],
           }}
-          transition={{ delay: index * 1.02 + 0.2 }}
+          transition={{ delay: index * 0.32 + 1.8 }}
           className="home-page-hero-text-border"
         />
       </div>

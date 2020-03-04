@@ -1,6 +1,6 @@
 .home-container {
   display: grid;
-  grid-template-rows: 43px 340px 24px 350px 1fr;
+  grid-template-rows: 43px 400px 24px 350px 1fr;
   grid-template-columns: 1fr 350px 24px;
   grid-column-gap: 24px;
 
@@ -11,11 +11,21 @@
     "search results ."
     ". . .";
 
+  .home-container-overlay {
+    position: absolute;
+    margin-top: 445px;
+    width: 100%;
+    height: 100%;
+    background-color: #ffffff;
+    z-index: 1000;
+  }
+
   .home-title {
     font-size: 32px;
   }
 
   .home-container-right-side {
+    position: relative;
     grid-area: results;
     display: flex;
     flex-direction: column;

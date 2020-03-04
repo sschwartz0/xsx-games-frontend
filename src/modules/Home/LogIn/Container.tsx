@@ -1,4 +1,5 @@
 import React, { useState } from "react";
+import { motion } from "framer-motion";
 import { TextField, PrimaryButton } from "office-ui-fabric-react";
 import { useStore } from "providers/StoreProvider";
 
@@ -17,7 +18,12 @@ export const LogInContainer: React.FC<LogInContainerProps> = () => {
   const onLogin = () => api.set.user.logIn();
 
   return (
-    <div className="home-container-log-in">
+    <motion.div
+      initial={{ y: "-50px", visibility: "hidden" }}
+      animate={{ visibility: "visible", y: ["-50px", "0px"] }}
+      transition={{ delay: 0.5 }}
+      className="home-container-log-in"
+    >
       <div className="home-container-log-in-content">
         <TextField
           placeholder="Email Address"
@@ -47,6 +53,6 @@ export const LogInContainer: React.FC<LogInContainerProps> = () => {
         />
       </div>
       <div className="home-container-log-in-stripe" />
-    </div>
+    </motion.div>
   );
 };

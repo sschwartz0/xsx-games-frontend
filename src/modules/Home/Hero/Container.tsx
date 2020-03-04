@@ -1,4 +1,5 @@
 import React, { useState } from "react";
+import { motion } from "framer-motion";
 
 // import { ActionBoxContainer } from "./ActionBox/Container";
 import { DescriptionBox } from "./DescriptionBox/Container";
@@ -9,6 +10,12 @@ export const HeroContainer: React.FC<{}> = () => {
 
   return (
     <div className="home-page-hero-container">
+      <motion.div
+        initial={{ width: "100%" }}
+        animate={{ width: ["100%", "0%"] }}
+        className="home-page-hero-container-background"
+        transition={{ delay: 1, duration: 1 }}
+      />
       <LinksContainer
         selectedLink={selectedLink}
         setSelectedLink={setSelectedLink}

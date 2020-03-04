@@ -1,4 +1,5 @@
 import React from "react";
+import { motion } from "framer-motion";
 // import { LatestContainer } from "./Latest/Container";
 import { withToasts, UseToasts } from "../../providers/ToastsProvider";
 import { SearchContainer } from "./Search/Container";
@@ -24,6 +25,12 @@ export const HomeDisplayContainer: React.FC<HomeDisplayContainerProps> = () => {
       <div className={classNames}>
         <LogInContainer />
         <HeroContainer />
+        <motion.div
+          initial={{ opacity: 1, visibility: "visible" }}
+          animate={{ opacity: [1, 0, 0], width: ["100%", "100%", "0%"] }}
+          transition={{ delay: 3, duration: 1 }}
+          className="home-container-overlay"
+        />
         <div className="home-container-right-side">
           <SearchContainer />
           <ResultsContainer />
