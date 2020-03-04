@@ -1,7 +1,15 @@
 .home-page-hero-container {
   grid-area: hero;
-  background: linear-gradient(180deg, $lightGrey 20%, $darkGrey 93%);
-  padding: 40px 60px;
+  background: linear-gradient(
+    156deg,
+    rgba(132, 252, 84, 1) 0%,
+    rgba(95, 248, 128, 1) 50%,
+    rgba(255, 255, 255, 1) 50%,
+    rgba(255, 255, 255, 1) 100%
+  );
+
+  // background-color: #ffffff;
+  padding: 20px 20px 20px 60px;
   display: grid;
   grid-template-columns: 140px 1fr 30px;
   grid-template-rows: 100%;
